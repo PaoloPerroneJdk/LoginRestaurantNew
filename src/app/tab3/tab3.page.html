@@ -1,17 +1,331 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header-rider [title]="headerTitle"></app-header-rider>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6">
+        <div *ngIf="rider.valutazioni >= 5">
+          <ng-container
+            *ngIf="rider.valutazioni < 20; else primaStellaTemplate"
+          >
+            <ion-icon name="star-outline"></ion-icon>
+          </ng-container>
+          <ng-template #primaStellaTemplate>
+            <ion-icon name="star" style="color: gold"></ion-icon>
+          </ng-template>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+          <ng-container
+            *ngIf="rider.valutazioni < 40; else primaStellaTemplate"
+          >
+            <ion-icon name="star-outline"></ion-icon>
+          </ng-container>
+          <ng-template #primaStellaTemplate>
+            <ion-icon name="star" style="color: gold"></ion-icon>
+          </ng-template>
+
+          <ng-container
+            *ngIf="rider.valutazioni < 60; else primaStellaTemplate"
+          >
+            <ion-icon name="star-outline"></ion-icon>
+          </ng-container>
+          <ng-template #primaStellaTemplate>
+            <ion-icon name="star" style="color: gold"></ion-icon>
+          </ng-template>
+
+          <ng-container
+            *ngIf="rider.valutazioni < 80; else primaStellaTemplate"
+          >
+            <ion-icon name="star-outline"></ion-icon>
+          </ng-container>
+          <ng-template #primaStellaTemplate>
+            <ion-icon name="star" style="color: gold"></ion-icon>
+          </ng-template>
+
+          <ng-container
+            *ngIf="rider.valutazioni < 90; else primaStellaTemplate"
+          >
+            <ion-icon name="star-outline"></ion-icon>
+          </ng-container>
+          <ng-template #primaStellaTemplate>
+            <ion-icon name="star" style="color: gold"></ion-icon>
+          </ng-template>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6">
+        <ion-avatar class="item-avatar">
+          <ion-img
+            src="../assets/img/user_null.png"
+            alt="{{rider.nome}}"
+          ></ion-img>
+        </ion-avatar>
+
+        <ion-button
+          class="btn-add-photo"
+          shape="round"
+          color="primary"
+          mode="md"
+        >
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <form [formGroup]="formRider" novalidate>
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+          <ion-item>
+            <ion-label position="floating">Nome*:</ion-label>
+            <ion-input
+              type="text"
+              mode="md"
+              formControlName="nome"
+              [disabled]="!rider.isNewRider"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+          <ion-item>
+            <ion-label position="floating">Cognome*:</ion-label>
+            <ion-input
+              type="text"
+              mode="md"
+              formControlName="cognome"
+              [disabled]="!rider.isNewRider"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-xs="12" size-sm="12" size-md="2" size-lg="2" size-xl="2">
+          <ion-item>
+            <ion-label position="floating">Età*:</ion-label>
+            <ion-input
+              type="number"
+              mode="md"
+              formControlName="eta"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
+          <ion-item>
+            <ion-label position="floating">Residenza*:</ion-label>
+            <ion-input
+              type="text"
+              mode="md"
+              formControlName="residenza"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size-xs="12" size-sm="12" size-md="4" size-lg="4" size-xl="4">
+          <ion-item>
+            <ion-label position="floating">Recapito*:</ion-label>
+            <ion-input
+              type="number"
+              mode="md"
+              formControlName="telefono"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col
+          size-xs="12"
+          size-sm="12"
+          size-md="12"
+          size-lg="12"
+          size-xl="12"
+        >
+          <ion-item>
+            <ion-label position="floating">Mezzo*:</ion-label>
+            <ion-input
+              type="text"
+              mode="md"
+              formControlName="mezzo"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col
+          size-xs="12"
+          size-sm="12"
+          size-md="12"
+          size-lg="12"
+          size-xl="12"
+        >
+          <ion-item>
+            <ion-label position="floating">Email*:</ion-label>
+            <ion-input
+              type="text"
+              mode="md"
+              formControlName="email"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col
+          size-xs="12"
+          size-sm="12"
+          size-md="12"
+          size-lg="12"
+          size-xl="12"
+        >
+          <ion-item>
+            <ion-label position="floating">Password*:</ion-label>
+            <ion-input
+              type="password"
+              mode="md"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <div *ngIf="!rider.isNewRider">
+        <ion-row>
+          <ion-col
+            size-xs="12"
+            size-sm="12"
+            size-md="12"
+            size-lg="12"
+            size-xl="12"
+          >
+            <ion-item>
+              <ion-label position="floating">Nuova password*:</ion-label>
+              <ion-input type="password" mode="md"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col
+            size-xs="12"
+            size-sm="12"
+            size-md="12"
+            size-lg="12"
+            size-xl="12"
+          >
+            <ion-item>
+              <ion-label position="floating">Conferma password*:</ion-label>
+              <ion-input type="password" mode="md"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-row>
+        <ion-col
+          size-xs="12"
+          size-sm="12"
+          size-md="12"
+          size-lg="12"
+          size-xl="12"
+        >
+          <!--ion-radio-group>
+            <ion-text >Turno lavorativo:</ion-text>
+            <ion-item>
+              <ion-label>MATTINA</ion-label>
+              <ion-radio
+                slot="start"
+                color="primary"
+                value="AM"
+                mode="md"
+                formControlName="orario"
+                [checked]="rider.orario == 'AM'"
+
+              ></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>SERA</ion-label>
+              <ion-radio
+                slot="start"
+                color="primary"
+                value="PM"
+                mode="md"
+                formControlName="orario"
+                [checked]="rider.orario == 'PM'"
+
+              ></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>FULL TIME</ion-label>
+              <ion-radio
+                slot="start"
+                color="primary"
+                value="FULL"
+                mode="md"
+                formControlName="orario"
+                [checked]="rider.orario == 'FULL'"
+
+              ></ion-radio>
+            </ion-item>
+          </ion-radio-group-->
+
+          <ion-item>
+            <ion-label>Disponibilità immediata:</ion-label>
+            <ion-checkbox
+              #disponibilita
+              (change)="scegliDisponibilita(disponibilita)"
+              color="primary"
+              [checked]="rider.disponibilita == 'IMMEDIATA'"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col
+          size-xs="12"
+          size-sm="12"
+          size-md="12"
+          size-lg="12"
+          size-xl="12"
+        >
+          <ion-item>
+            <ion-label>Descrizione:</ion-label>
+            <ion-textarea 
+            mode="md"
+             rows=2 
+             cols=12
+             formControlName="descrizione"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" *ngIf="!rider.isNewRider">
+          <ion-button
+            color="danger"
+            expand="block"
+            [disabled]="!formRider.valid"
+            (click)="modifica()"
+            >Modifica</ion-button
+          >
+        </ion-col>
+
+        <ion-col size="12" *ngIf="rider.isNewRider">
+          <ion-button
+            color="success"
+            expand="block"
+            [disabled]="!formRider.valid"
+            (click)="salva()"
+            >Salva</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
 </ion-content>

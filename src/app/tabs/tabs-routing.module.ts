@@ -35,7 +35,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'tab3/:idRider',
         children: [
           {
             path: '',
@@ -45,7 +45,7 @@ const routes: Routes = [
         ]
       }
     ]
-  }
+  },
 ];
  
 @NgModule({

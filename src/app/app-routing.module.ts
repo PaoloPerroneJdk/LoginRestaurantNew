@@ -15,19 +15,14 @@ const routes: Routes = [
       import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
-    path: 'registerRestaurant',
+    path: 'register',
     loadChildren: () =>
       import('./register/register.module').then(m => m.RegisterPageModule)
   },
-
   {
-    path: 'registerRiders',
-    loadChildren: () => import('./tab2/tab2.module').then(m => m.Tab2PageModule)
-  },
-
-
-
-
+    path: 'riderhome/:idRider',
+    loadChildren: () => import('./rider-home/rider-home.module').then( m => m.RiderHomePageModule)
+  }
 ];
  
 @NgModule({
