@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
 import { take, map, switchMap } from 'rxjs/operators';
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
  
-const helper = new JwtHelperService();
+//const helper = new JwtHelperService();
 const TOKEN_KEY = 'jwt-token';
  
 @Injectable({
@@ -17,11 +15,13 @@ export class AuthService {
   public user: Observable<any>;
   private userData = new BehaviorSubject(null);
  
-  constructor(private storage: Storage, private http: HttpClient, private plt: Platform, private router: Router) { 
-    this.loadStoredToken();  
+  constructor(
+    private storage: Storage,
+     private plt: Platform, 
+     private router: Router) { 
   }
  
-  loadStoredToken() {
+  /*loadStoredToken() {
     let platformObs = from(this.plt.ready());
  
     this.user = platformObs.pipe(
@@ -69,12 +69,12 @@ export class AuthService {
     return this.userData.getValue();
   }
  
-  logout() {
+  /*logout() {
     this.storage.remove(TOKEN_KEY).then(() => {
       this.router.navigateByUrl('/');
       this.userData.next(null);
     });
-  }
+  }*/
 
 
   

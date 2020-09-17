@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Users } from '../model';
+import { Users } from '../models/Users';
 
-
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' }) 
 export class UserService {
     constructor(private http: HttpClient) { }
 

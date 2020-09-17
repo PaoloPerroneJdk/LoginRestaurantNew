@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Restaurant } from '../model/restaurant';
-
-
-
+import { Restaurant } from '../models/Restaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +11,11 @@ export class AdminRestaurantService {
 
   listRestaurant: Array<Restaurant> = new Array()
 
-  
-
-
   constructor() { }
 
   register(restaurant: Restaurant):number{
 
-    restaurant.idRestaurant = new Date().getTime();
+    restaurant.id = new Date().getTime();
 
     for (let appoR of this.listRestaurant) {
       if (appoR.email == restaurant.email) {
@@ -31,7 +25,7 @@ export class AdminRestaurantService {
         
       }
     }
-    return restaurant.idRestaurant;
+    return restaurant.id;
 
   }
 

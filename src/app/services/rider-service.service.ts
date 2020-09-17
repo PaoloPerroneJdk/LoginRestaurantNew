@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Rider } from '../model/Rider';
+import { Rider } from '../models/Rider';
 
 @Injectable({
   providedIn: "root",
@@ -7,6 +7,8 @@ import { Rider } from '../model/Rider';
 export class RiderServiceService {
   listaRider: Array<Rider> = new Array(
     new Rider(
+      "a@email.it",
+      "0000",
       0,
       true,
       null,
@@ -21,10 +23,11 @@ export class RiderServiceService {
       null,
       null,
       null,
-      "a@email.it",
-      "0000"
+      
     ),
     new Rider(
+      "b@email.com",
+      "1111",
       1,
       false,
       "Mohamed",
@@ -39,8 +42,7 @@ export class RiderServiceService {
       null,
       null,
       70,
-      "b@email.com",
-      "1111"
+      
     )
   );
 
@@ -48,23 +50,23 @@ export class RiderServiceService {
 
   salvaRider(rider: Rider): number {
     this.listaRider.push(rider);
-    return rider.idRider;
+    return rider.id;
   }
 
   modificaDatiRider(rider: Rider) {
     for (let index = 0; index < this.listaRider.length; index++) {
-      if (rider.idRider == this.listaRider[index].idRider) {
+      if (rider.id == this.listaRider[index].id) {
         this.listaRider.splice(index, 1, rider);
       }
     }
 
-    return rider.idRider;
+    return rider.id;
   }
 
   getRider(id: number) {
     let appoRider: Rider;
     for (let rider of this.listaRider) {
-      if (rider.idRider == id) {
+      if (rider.id == id) {
         appoRider = rider;
       }
     }

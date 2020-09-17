@@ -1,5 +1,7 @@
 {
-  "name": "loginRestaurant",
-  "integrations": {},
+  "name": "Demo1",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
