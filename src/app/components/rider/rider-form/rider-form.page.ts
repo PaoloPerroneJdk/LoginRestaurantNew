@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Rider } from 'src/app/models/Rider';
-import { RiderServiceService } from 'src/app/services/rider-service.service';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
+//import { RiderServiceService } from 'src/app/services/rider-service.service';
 
 @Component({
   selector: 'app-rider-form',
@@ -15,25 +16,24 @@ export class RiderFormPage implements OnInit {
   formRider: FormGroup;
   isModifica: boolean = false;
   headerTitle: string = "rider account";
-  idRider: number;
+  riderEmail: string;
   img: string;
 
   constructor(
     private router: Router,
     private activateRouter: ActivatedRoute,
-    private riderService: RiderServiceService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private store: StorageServiceService
   ) { }
 
   ngOnInit(): void {
 
-    this.activateRouter.params.subscribe((param) => this.idRider = param.idRider);
+    this.activateRouter.params.subscribe((param) => this.riderEmail = param.riderEmail);
+    this.rider = new Rider(this.riderEmail,null, null, null);
 
-    this.rider = this.riderService.getRider(this.idRider);
-    this.rider.isNewRider ? this.img = "./../assets/user_null.png" : this.img = this.rider.foto;
+    this.rider = this.store.login(this.rider);
 
     this.formRider = new FormGroup({
-      idRider: new FormControl(this.rider.id),
       nome: new FormControl(this.rider.nome, [Validators.required]),
       cognome: new FormControl(this.rider.cognome, [Validators.required]),
       eta: new FormControl(this.rider.eta , [Validators.required, Validators.minLength(2), Validators.maxLength(2), Validators.min(18), Validators.max(70)]),
@@ -46,7 +46,7 @@ export class RiderFormPage implements OnInit {
       descrizione: new FormControl(this.rider.descrizione, [Validators.maxLength(500)])
     });
 
-    this.rider.isNewRider ? this.img = "../../assets/img/user_null.png" : this.img = this.rider.foto;
+    this.rider.isNew ? this.img = "../../assets/img/user_null.png" : this.img = this.rider.foto;
 
   }
 
@@ -62,16 +62,15 @@ export class RiderFormPage implements OnInit {
 
   public salva(){
     this.rider = this.formRider.value;
-    this.rider.isNewRider = false;
-    let id = this.riderService.salvaRider(this.rider);
-    id!=null? this.salvaToast(): null
-    this.router.navigate(["riderhome/", id]);
+    this.rider.isNew = false;
+
+    //id!=null? this.salvaToast(): null
+    this.router.navigate(["riderhome/", this.riderEmail]);
   }
 
   public modifica(){
-   let id = this.riderService.modificaDatiRider(this.rider);
-   id!=null? this.modificaToast(): null
-    this.router.navigate(["riderhome/", id]);
+   //id!=null? this.modificaToast(): null
+    this.router.navigate(["riderhome/", this.riderEmail]);
   }
 
   async salvaToast() {

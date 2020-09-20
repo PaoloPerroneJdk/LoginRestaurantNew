@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Restaurant } from 'src/app/models/Restaurant';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { AdminRestaurantService } from 'src/app/services/adminRestaurant.service';
+//import { AdminRestaurantService } from 'src/app/services/adminRestaurant.service';
 
 @Component({
   selector: "app-restoraunt-form",
@@ -17,12 +17,14 @@ export class RestorauntFormComponent implements OnInit {
   loading = false;
   submitted = false;
   restaurant: Restaurant;
+  restorauntEmail: string;
 
   constructor(
     public nav: NavController,
     private router: Router,
-    private adminRestaurantService: AdminRestaurantService
+   // private adminRestaurantService: AdminRestaurantService
   ) {
+
     this.registerForm = new FormGroup({
       name: new FormControl("", Validators.required),
       position: new FormControl("", Validators.required),
@@ -39,7 +41,7 @@ export class RestorauntFormComponent implements OnInit {
   register() {
     console.log("credenziali salvate");
     this.restaurant = this.registerForm.value;
-    let id = this.adminRestaurantService.register(this.restaurant);
-    this.router.navigate(["restauranthome", 0]);
+    //let id = this.adminRestaurantService.register(this.restaurant);
+    this.router.navigate(["restauranthome", this.restorauntEmail]);
   }
 }

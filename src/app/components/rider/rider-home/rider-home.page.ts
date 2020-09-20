@@ -9,12 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 export class RiderHomePage implements OnInit {
 
   headerTitle: string = "rider home";
-  idRider: number;
+  riderEmail: string;
 
   constructor(private routes: ActivatedRoute) { }
 
   ngOnInit() {
-    this.routes.params.subscribe((param) => this.idRider = param.idRider);
+    this.routes.params.subscribe((param) => this.riderEmail = param.idRider);
   }
 
 }

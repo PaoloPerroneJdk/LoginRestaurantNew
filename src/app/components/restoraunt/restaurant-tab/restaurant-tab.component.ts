@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RestaurantTabComponent implements OnInit {
 
-  @Input()  idRestaurant: number;
+  @Input()  restorauntEmail: string;
   
 
   constructor() { }

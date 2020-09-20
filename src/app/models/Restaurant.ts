@@ -1,15 +1,16 @@
-import { Users } from './Users';
+import { Users } from "./Users";
 
 export class Restaurant implements Users {
-
-    id: number;
-    name: string;
-    position: string;
-    deliveryRange:string;
-    salary:number;
-    time: string;
-    mobile:number;
-    email:string;
-    password:string;
-
+  constructor(
+    public email: string,
+    public password: string,
+    public ruolo: string,
+    public isNew: boolean,
+    public name?: string,
+    public position?: string,
+    public deliveryRange?: string,
+    public salary?: number,
+    public time?: string,
+    public mobile?: number
+  ) {}
 }

@@ -8,11 +8,11 @@ import { RestorauntHomeComponent } from './components/restoraunt/restoraunt-home
 
 const routes: Routes = [
   {path: "", component: LoginPage},
-  {path: "riderform/:idRider", component: RiderFormPage},
-  {path: "riderhome/:idRider", component: RiderHomePage},
+  {path: "riderform/:riderEmail", component: RiderFormPage},
+  {path: "riderhome/:riderEmail", component: RiderHomePage},
 
-  {path: "restaurantform/:idRestoraunt", component: RestorauntFormComponent},
-  {path: "restauranthome/:idRestoraunt", component: RestorauntHomeComponent}
+  {path: "restaurantform/:restorauntEmail", component: RestorauntFormComponent},
+  {path: "restauranthome/:restorauntEmail", component: RestorauntHomeComponent}
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./restoraunt-home.component.scss"],
 })
 export class RestorauntHomeComponent implements OnInit {
-  idRestaurant: number;
+  restorauntEmail: string;
 
   constructor(
     private auth: AuthService,
@@ -18,7 +18,7 @@ export class RestorauntHomeComponent implements OnInit {
 
   ngOnInit() {
     this.activateRouter.params.subscribe(
-      (param) => (this.idRestaurant = param.idRestaurant)
+      (param) => (this.restorauntEmail = param.restorauntEmail)
     );
   }
 
