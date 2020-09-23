@@ -20,6 +20,7 @@ import { RiderTabComponent } from './components/rider/rider-tab/rider-tab.compon
 import { StorageServiceService } from './services/storage-service.service';
 import { RestaurantTabComponent } from './components/restoraunt/restaurant-tab/restaurant-tab.component';
 import { HeaderRestaurantComponent } from './components/headers/header-restaurant/header-restaurant.component';
+import { RestaurantAnnunciComponent } from './components/restoraunt/restaurant-annunci/restaurant-annunci.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { HeaderRestaurantComponent } from './components/headers/header-restauran
      RiderFormPage,
      HeaderRiderComponent,
      RiderTabComponent,
-
+     RestaurantAnnunciComponent,
      RestaurantTabComponent,
      RestorauntFormComponent,
     RestorauntHomeComponent,

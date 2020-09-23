@@ -1,0 +1,53 @@
+<ion-header>
+
+
+  <ion-item color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="restauranthome/:idRestoraunt"></ion-back-button>
+    </ion-buttons>
+    <ion-label>
+      ANNUNCI DI LAVORO
+    </ion-label>
+    <ion-avatar slot="end">
+      <img src="assets/annuncio.jpeg" class="player">
+    </ion-avatar>
+  </ion-item>
+</ion-header>
+<ion-content class="background-image">
+
+  <ion-item>
+    <ion-label position="floating">* NOME</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">* POSIZIONE</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">* RAGGIO</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">* TIPOLOGIA-ORARIO</ion-label>
+    <ion-select multiple="true" cancelText="Cancel" okText="Ok!">
+      <ion-select-option value="colazione">Colazione</ion-select-option>
+      <ion-select-option value="pranzo">Pranzo</ion-select-option>
+      <ion-select-option value="cena">Cena</ion-select-option>
+      <ion-select-option value="settimanale">Settimanale</ion-select-option>
+      <ion-select-option value="sensile">Mensile</ion-select-option>
+
+    </ion-select>
+
+
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">* RETRIBUZIONE</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+</ion-content>
